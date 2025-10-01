@@ -8,14 +8,18 @@ This file contains several functions that are used in multiple scripts.
 def set_params():
     import argparse
     import sys
+    import datetime
+
+    # Used as the default end date.
+    today = datetime.date.today().strftime("%Y-%m-%d")
 
     # Read arguments from command line
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-t", "--token", dest = "gh_key", help="GitHub Personal Access Token")
+    parser.add_argument("-t", "--token", dest = "gh_key", help="File containing a GitHub Personal Access Token")
     parser.add_argument("-u", "--url", dest = "gh_url", help="URL for a GitHub repository")
     parser.add_argument("-b", "--begin_date", dest = "begin_date", help="Date in the format YYYY-MM-DD - gather commits after this begin date")
-    parser.add_argument("-e", "--end_date", dest = "end_date", help="Date in the format YYYY-MM-DD - gather commits up until this end date")
+    parser.add_argument("-e", "--end_date", dest = "end_date", default=today, help="Date in the format YYYY-MM-DD - gather commits up until this end date. Default is today.")
 
     args = parser.parse_args()
 
