@@ -1,11 +1,12 @@
 # Copyright Dawn M. Foster
 # SPDX-License-Identifier: MIT
 
-"""Gets Commit Data 
+"""Gets Commit Data by person
 This is aggregated per person for a repo between two specified dates.
 I'm currently using this to better understand who contributes to a project
 before and after a key time in the project (relicense / fork) with a focus on
-understanding organizational diversity.
+understanding organizational diversity. This was used for the initial analysis,
+which was focused only on commit data.
 
 Output (files are stored in the data-files directory)
 * GitHub API response code (should be "<Response [200]>")
