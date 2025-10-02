@@ -231,7 +231,9 @@ def create_peopleDict(results_prs, api_token):
                     for reviews in pr['reviews']['nodes']:
                         peopleDict = add_user(reviews['author']['login'], peopleDict, g, bot_list)
                 except:
-                    print("Failed to add to people dict - PR", pr['url'], "Author:", pr['author']['login'])
+                    # This can occur for deleted accounts, some types of bot accounts, and other reasons
+                    print("Failed to add someone to people dict from PR", pr['url'])
+
     
     return(peopleDict)
 
@@ -250,8 +252,6 @@ print("Saving peopleDict to", people_output_file)
 with open(people_output_file, 'wb') as f:
     pickle.dump(peopleDict, f)
 
-# SAVE PEOPLE DICT
-# IS THERE ANYTHING ELSE I CAN DO HERE?
 
 
 
